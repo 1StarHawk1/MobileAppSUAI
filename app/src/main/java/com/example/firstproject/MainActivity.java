@@ -48,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (CameraAccessException e) {
             throw new RuntimeException(e);
         }
-
-
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
         textViewLatitude = findViewById(R.id.latitude);
@@ -57,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
     }
-
-
 
     public void toggleVibration(View v) {
         vibrator.vibrate(1000);
@@ -128,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
     }
 
-    @Override
+    /* @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == MY_PERMISSIONS_REQUEST_LOCATION) {
@@ -140,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Для получения местоположения требуется разрешение", Toast.LENGTH_SHORT).show();
             }
         }
-    }
+    }*/
 
     public void startSecondPage(View v){
         Intent intent = new Intent(this, SecondActivity.class);

@@ -21,8 +21,8 @@
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="178dp"
-        android:layout_height="79dp"
+        android:layout_width="184dp"
+        android:layout_height="61dp"
         android:layout_marginBottom="116dp"
         android:onClick="startSecondPage"
         android:text="Фото смешного кота"
@@ -33,8 +33,8 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="178dp"
-        android:layout_height="79dp"
+        android:layout_width="164dp"
+        android:layout_height="64dp"
         android:layout_marginTop="16dp"
         android:onClick="startThirdPage"
         android:text="Мадс Миккельсен"
@@ -89,13 +89,15 @@
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="244dp"
-        android:layout_height="97dp"
+        android:layout_width="162dp"
+        android:layout_height="71dp"
         android:onClick="startCatalog"
         android:text="Каталогизатор"
         app:layout_constraintBottom_toTopOf="@+id/button1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintVertical_bias="0.455" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
