@@ -79,12 +79,23 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="304dp"
+        android:layout_marginBottom="340dp"
         android:onClick="getLocation"
         android:text="Отобразить координаты"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:toggleCheckedStateOnClick="false" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="244dp"
+        android:layout_height="97dp"
+        android:onClick="startCatalog"
+        android:text="Каталогизатор"
+        app:layout_constraintBottom_toTopOf="@+id/button1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -151,4 +151,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+        public void startCatalog(View v){
+            Intent intent = new Intent(this, titleCatalog.class);
+            startActivity(intent);
+        }
 }
