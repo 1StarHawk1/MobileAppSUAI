@@ -17,8 +17,6 @@ import android.os.Vibrator;
 import android.view.View;
 import android.widget.TextView;
 import android.Manifest;
-import android.widget.Toast;
-import androidx.annotation.NonNull;
 
 
 public class MainActivity extends AppCompatActivity {

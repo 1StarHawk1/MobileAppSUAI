@@ -17,25 +17,28 @@
         android:theme="@style/Theme.FirstProject"
         tools:targetApi="31">
         <activity
+            android:name=".UpdateActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".titleCatalog"/>
+            android:parentActivityName=".titleCatalog"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".titleCatalog"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ThirdActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SecondActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
