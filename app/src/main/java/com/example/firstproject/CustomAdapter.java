@@ -1,9 +1,11 @@
 package com.example.firstproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,9 +39,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.title_id_txt.setText(String.valueOf(title_id.get(position)));
+        holder.title_id_txt.setText(String.valueOf(position+1));
         holder.title_name_txt.setText(String.valueOf(title_name.get(position)));
         holder.title_type_txt.setText(String.valueOf(title_type.get(position)));
+        holder.mainLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(context, UpdateActivity.class);
+            intent.putExtra("id", String.valueOf((title_id.get(position))));
+            intent.putExtra("name", String.valueOf((title_name.get(position))));
+            intent.putExtra("type", String.valueOf((title_type.get(position))));
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -49,12 +58,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView title_id_txt, title_name_txt, title_type_txt;
+        LinearLayout mainLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             title_id_txt = itemView.findViewById(R.id.title_id_txt);
             title_name_txt = itemView.findViewById(R.id.title_name_txt);
             title_type_txt = itemView.findViewById(R.id.title_type_txt);
+            mainLayout = itemView.findViewById(R.id.MainLayout);
         }
     }
 }

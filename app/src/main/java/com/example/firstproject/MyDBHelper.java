@@ -54,6 +54,31 @@ public class MyDBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void deleteTitle(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        long result = db.delete(TABLE_NAME, "_id = ?", new String[]{id});
+        if(result == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void updateTitle(String id, String name, String type){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_TITLE, name);
+        cv.put(COLUMN_TYPE, type);
+        long result = db.update(TABLE_NAME, cv, "_id = ?", new String[]{id});
+        if(result == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Upgraded", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @SuppressLint("Recycle")
     Cursor readAllData(){
         String query = "SELECT * FROM " + TABLE_NAME;
