@@ -66,6 +66,11 @@ public class MyDBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void deleteAllData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + TABLE_NAME );
+    }
+
     public void updateTitle(String id, String name, String type){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();

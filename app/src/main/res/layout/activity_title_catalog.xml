@@ -39,4 +39,16 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:srcCompat="@drawable/add_icon" />
 
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
+      android:id="@+id/delete_all_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="16dp"
+      android:clickable="true"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/add_button"
+      app:layout_constraintHorizontal_bias="0.605"
+      app:layout_constraintStart_toEndOf="@+id/button4"
+      app:srcCompat="@drawable/delete_icon" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

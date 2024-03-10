@@ -1,9 +1,11 @@
 package com.example.firstproject;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -16,7 +18,7 @@ import java.util.ArrayList;
 
 public class titleCatalog extends AppCompatActivity {
 
-    FloatingActionButton addButton;
+    FloatingActionButton addButton, deleteButton;
     RecyclerView recyclerView;
     MyDBHelper myDB;
     ArrayList<String> title_id, title_name, title_type;
@@ -27,9 +29,13 @@ public class titleCatalog extends AppCompatActivity {
         setContentView(R.layout.activity_title_catalog);
         recyclerView = findViewById(R.id.recycler);
         addButton = findViewById(R.id.add_button);
+        deleteButton = findViewById(R.id.delete_all_button);
         addButton.setOnClickListener(v -> {
             Intent intent = new Intent(titleCatalog.this, AddActivity.class);
             startActivity(intent);
+        });
+        deleteButton.setOnClickListener(v -> {
+            confirmDialog();
         });
 
         myDB = new MyDBHelper(titleCatalog.this);
@@ -60,5 +66,28 @@ public class titleCatalog extends AppCompatActivity {
     public void startFirstPage(View v){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    void confirmDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Удалить все данные?");
+        builder.setMessage("Вы уверены что хотить удалить все данные?");
+        builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                MyDBHelper myDB = new MyDBHelper(titleCatalog.this);
+                myDB.deleteAllData();
+                Intent intent = new Intent(titleCatalog.this, titleCatalog.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        builder.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.create().show();
     }
 }

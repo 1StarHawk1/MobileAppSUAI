@@ -1,7 +1,9 @@
 package com.example.firstproject;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -30,10 +32,8 @@ public class UpdateActivity extends AppCompatActivity {
         });
         delete_button = findViewById(R.id.delete_title_button);
         delete_button.setOnClickListener(v -> {
-            MyDBHelper myDB = new MyDBHelper(UpdateActivity.this);
-            myDB.deleteTitle(id);
-            Intent intent = new Intent(this, titleCatalog.class);
-            startActivity(intent);
+            confirmDialog();
+
         });
         getAndSetIntentData();
     }
@@ -50,5 +50,28 @@ public class UpdateActivity extends AppCompatActivity {
         }else{
             Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    void confirmDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Удалить " + name + "?");
+        builder.setMessage("Вы уверены что хотить удалить " + name +"?");
+        builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                MyDBHelper myDB = new MyDBHelper(UpdateActivity.this);
+                myDB.deleteTitle(id);
+                Intent intent = new Intent(UpdateActivity.this, titleCatalog.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        builder.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.create().show();
     }
 }
